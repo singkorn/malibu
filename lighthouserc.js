@@ -5,10 +5,11 @@ const url = `https://${process.env.LH_USER}:${process.env.LH_PASSWORD}@lighthous
 //   "https://malibu-web.qtstage.io",
 //   "https://malibu-web.quintype.io"
 // ];
+console.log("---------------------------", process.env.LHCI_SITES);
 const lhciConfig = {
   ci: {
     collect: {
-      url: JSON.parse(process.env.LHCI_SITES),
+      url: process.env.LHCI_SITES,
       settings: {
         emulatedFormFactor: "mobile"
       }
