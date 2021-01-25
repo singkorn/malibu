@@ -5,18 +5,23 @@ const url = `https://${process.env.LH_USER}:${process.env.LH_PASSWORD}@lighthous
 //   "https://malibu-web.qtstage.io",
 //   "https://malibu-web.quintype.io"
 // ];
-console.log("---------------------------", process.env.LHCI_SITES);
+let minScore = 0.9;
+if (process.env.LHCI_SITES[0].includes("perf")) {
+  minScore = 0.75;
+} else if (process.env.LHCI_SITES[0].includes("staging")) {
+  minScore = 0.85;
+}
 const lhciConfig = {
   ci: {
     collect: {
-      url: process.env.LHCI_SITES,
+      url: JSON.parse(process.env.LHCI_SITES),
       settings: {
         emulatedFormFactor: "mobile"
       }
     },
     assert: {
       assertions: {
-        "categories:performance": ["error", { minScore: 0.9 }]
+        "categories:performance": ["error", { minScore: minScore }]
       }
     },
     upload: {
