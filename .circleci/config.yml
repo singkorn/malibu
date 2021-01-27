@@ -65,7 +65,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\"]"
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\", \"https://malibu-perf.quintype.io/?uptime\", \"https://malibu-web.qtstage.io\", \"https://malibu-web.quintype.io\"]"
           npx @lhci/cli@0.6.x autorun
 
   perf_lighthouse_task:
@@ -74,7 +74,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-perf.quintype.io/?uptime\"]"
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\", \"https://malibu-perf.quintype.io/?uptime\", \"https://malibu-web.qtstage.io\", \"https://malibu-web.quintype.io\"]"
           npx @lhci/cli@0.6.x autorun
 
 
@@ -84,7 +84,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-web.qtstage.io\"]"
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\", \"https://malibu-perf.quintype.io/?uptime\", \"https://malibu-web.qtstage.io\", \"https://malibu-web.quintype.io\"]"
           npx @lhci/cli@0.6.x autorun
 
   prod_lighthouse_task:
@@ -93,7 +93,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          export LHCI_SITES="[\"https://malibu-web.quintype.io\"]"
+          export LHCI_SITES="[\"https://malibu-qa-web.qtstage.io/\", \"https://malibu-perf.quintype.io/?uptime\", \"https://malibu-web.qtstage.io\", \"https://malibu-web.quintype.io\"]"
           npx @lhci/cli@0.6.x autorun
 
 workflows:
