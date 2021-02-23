@@ -2,14 +2,30 @@ import React from "react";
 import { Link, ResponsiveImage } from "@quintype/components";
 import { shape, string, object, integer, arrayOf } from "prop-types";
 import "./story-grid.m.css";
-
+import { get } from "lodash";
 function StoryGridStoryItem(props) {
+  const heroImageS3 =
+    props.story.alternative &&
+    props.story.alternative.home &&
+    props.story.alternative.home.default &&
+    props.story.alternative.home.default["hero-image"] &&
+    props.story.alternative.home.default["hero-image"]["hero-image-metadata"]
+      ? get(props, ["story", "alternative", "home", "default", "hero-image", "hero-image-s3-key"], "")
+      : props.story["hero-image-s3-key"];
+  const heroImageMetadata =
+    props.story.alternative &&
+    props.story.alternative.home &&
+    props.story.alternative.home.default &&
+    props.story.alternative.home.default["hero-image"] &&
+    props.story.alternative.home.default["hero-image"]["hero-image-metadata"]
+      ? get(props, ["story", "alternative", "home", "default", "hero-image", "hero-image-metadata"], "")
+      : props.story["hero-image-metadata"];
   return (
     <Link href={`${props.story.slug}`} className="story-grid-item">
       <figure className="qt-image-16x9" styleName="story-grid-item-image">
         <ResponsiveImage
-          slug={props.story["hero-image-s3-key"]}
-          metadata={props.story["hero-image-metadata"]}
+          slug={heroImageS3}
+          metadata={heroImageMetadata}
           aspectRatio={[16, 9]}
           defaultWidth={480}
           widths={[250, 480, 640]}
