@@ -11,7 +11,8 @@ function AppLogo() {
     <div>
       <Link href="/">
         <img
-          height="60px"
+          width="53"
+          height="60"
           loading="lazy"
           styleName="publisher-logo"
           srcSet={` ${assetify(logo)}`}
