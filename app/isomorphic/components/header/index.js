@@ -3,6 +3,7 @@ import get from "lodash/get";
 import { connect } from "react-redux";
 
 import { NavBar } from "./nav-bar";
+import { Foo } from "../pages/foo";
 
 import "./header.m.css";
 
@@ -12,6 +13,7 @@ class HeaderBase extends React.Component {
     return (
       <div styleName="container">
         <NavBar {...this.props} />
+        <Foo />
       </div>
     );
   }
